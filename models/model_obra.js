@@ -15,8 +15,10 @@ Obra.init({
     metodoUsado: DataTypes.STRING,
     dimensoes: DataTypes.STRING
 }, { sequelize, modelName: 'obra' })
-Obra.belongsTo(Exposicao)
+
 Exposicao.hasMany(Obra)
+Obra.belongsTo(Exposicao)
+
 
 
 

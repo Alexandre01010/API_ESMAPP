@@ -18,6 +18,8 @@ Pergunta.hasMany(Resposta)
 
 
 
+
+
 sequelize.sync().then(() => { console.log("Sincronizado com sucesso") }).catch(error => {
     console.log(error);
 })

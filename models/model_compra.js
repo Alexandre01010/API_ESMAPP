@@ -17,8 +17,9 @@ Compra.init({
 Compra.belongsTo(User)
 User.hasMany(Compra)
 
-Loja.belongsToMany(Compra, { through: "compra_artigos" })
 Compra.belongsToMany(Loja, { through: "compra_artigos" })
+Loja.belongsToMany(Compra, { through: "compra_artigos" })
+
 
 
 

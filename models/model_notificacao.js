@@ -13,8 +13,9 @@ Notificacao.init({
 
 }, { sequelize, modelName: 'notificacao' })
 
-Notificacao.belongsTo(User)
 User.hasMany(Notificacao)
+Notificacao.belongsTo(User)
+
 
 
 

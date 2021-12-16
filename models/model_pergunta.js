@@ -11,8 +11,10 @@ Pergunta.init({
     texto: DataTypes.STRING,
     pontos: DataTypes.INTEGER
 }, { sequelize, modelName: 'pergunta' })
-Pergunta.belongsTo(Exposicao)
+
 Exposicao.hasMany(Pergunta)
+Pergunta.belongsTo(Exposicao)
+
 
 
 
