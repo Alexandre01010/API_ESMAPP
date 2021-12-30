@@ -16,7 +16,7 @@ const router_loja=require('./routes/routes_loja')
 
 
 const auth = function (req, res, next) {
-    let exceptions = ['/'];
+    let exceptions = ['/','/exposicao'];
     if (exceptions.indexOf(req.url) >= 0) {
         next();
     } else {
