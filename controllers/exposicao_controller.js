@@ -50,5 +50,37 @@ const createExpo = (req, res) => {
     })
 }
 
+const editExpo = (req, res) => {
+    Exposicao.findAll({
+        where:{
+           id: req.params.idExposicao 
+        }
+    }).then((expo) => {
+        if(expo.length > 0){
+            Exposicao.update({
+                QrCode: req.body.QrCode,
+                pontos: req.body.pontos,
+                nomeAutor: req.body.nomeAutor,
+                numeroPiso: req.body.numeroPiso,
+                txtApresentacao: req.body.txtApresentacao,
+                img: req.body.img,
+                dataInicio: req.body.dataInicio,
+                dataFim: req.body.dataFim
+            }, {
+                where:{ id: req.params.idExposicao }
+            })
+        }else{
+            res.status(404).json({
+                message: "Exposição com o id " + req.params.idExposicao + " não encontrada"
+            })
+        }
+    }).catch((error) => {
+        res.status(500).json({
+            message: error
+        })
+    })
+}
+
 exports.listAll = listAll
 exports.createExpo = createExpo
+exports.editExpo = editExpo

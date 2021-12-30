@@ -24,5 +24,20 @@ router.route('/').post([
     }
 })
 
+router.route('/:idExposicao').put([
+    body('nomeAutor').notEmpty(),
+    body('pontos').notEmpty(),
+    body('txtApresentacao').notEmpty(),
+    body('QrCode').notEmpty(),
+    body('numeroPiso').notEmpty()
+], function (req, res){
+    const errors = validationResult(req)
+    if(errors.isEmpty()){
+        controllerExposicoes.editExpo(req, res)
+    }else{
+        res.status(404).json({ errors: errors.array() })
+    }
+})
+
 
 module.exports=router
