@@ -13,7 +13,7 @@ Loja.init({
     pontosRequeridos:DataTypes.INTEGER,
     img:DataTypes.STRING
     
-}, { sequelize, modelName: 'loja' })
+}, { sequelize, modelName: 'loja',freezeTableName: true })
 
 
 

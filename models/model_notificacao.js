@@ -11,7 +11,7 @@ Notificacao.init({
     texto: DataTypes.STRING,
     visibilidade: DataTypes.BOOLEAN,
 
-}, { sequelize, modelName: 'notificacao' })
+}, { sequelize, modelName: 'notificacao',freezeTableName: true })
 
 User.hasMany(Notificacao)
 Notificacao.belongsTo(User)

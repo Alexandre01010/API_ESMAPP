@@ -10,7 +10,7 @@ class Resposta extends Model { }
 Resposta.init({
     texto: DataTypes.STRING,
     veracidade: DataTypes.BOOLEAN
-}, { sequelize, modelName: 'resposta' })
+}, { sequelize, modelName: 'resposta',freezeTableName: true })
 
 Resposta.belongsTo(Pergunta)
 Pergunta.hasMany(Resposta)

@@ -10,7 +10,7 @@ class Pergunta extends Model { }
 Pergunta.init({
     texto: DataTypes.STRING,
     pontos: DataTypes.INTEGER
-}, { sequelize, modelName: 'pergunta' })
+}, { sequelize, modelName: 'pergunta',freezeTableName: true })
 
 Exposicao.hasMany(Pergunta)
 Pergunta.belongsTo(Exposicao)

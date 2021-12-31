@@ -14,7 +14,7 @@ Obra.init({
     titulo: DataTypes.STRING,
     metodoUsado: DataTypes.STRING,
     dimensoes: DataTypes.STRING
-}, { sequelize, modelName: 'obra' })
+}, { sequelize, modelName: 'obra',freezeTableName: true })
 
 Exposicao.hasMany(Obra)
 Obra.belongsTo(Exposicao)

@@ -12,7 +12,7 @@ Compra.init({
     data: DataTypes.DATE,
     pagamento: DataTypes.STRING
 
-}, { sequelize, modelName: 'compra' })
+}, { sequelize, modelName: 'compra',freezeTableName: true })
 
 Compra.belongsTo(User)
 User.hasMany(Compra)

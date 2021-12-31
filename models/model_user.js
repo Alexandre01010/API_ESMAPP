@@ -12,7 +12,7 @@ User.init({
     email: DataTypes.STRING,
     pontos: DataTypes.INTEGER,
 
-}, { sequelize, modelName: 'user' })
+}, { sequelize, modelName: 'user', freezeTableName: true })
 
 sequelize.sync().then(() => { console.log("Sincronizado com sucesso") }).catch(error => {
     console.log(error);

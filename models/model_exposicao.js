@@ -16,7 +16,7 @@ Exposicao.init({
     dataInicio: DataTypes.DATE,
     dataFim: DataTypes.DATE
 
-}, { sequelize, modelName: 'exposicao' })
+}, { sequelize, modelName: 'exposicao',freezeTableName: true })
 
 
 
