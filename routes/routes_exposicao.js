@@ -6,7 +6,7 @@ const { validationResult, body } = require('express-validator')
 
 
 router.get('/', function (req, res) {
-    controller.listAll(req, res);
+    controllerExposicoes.listAll(req, res);
 })
 
 router.route('/').post([
@@ -38,6 +38,8 @@ router.route('/:idExposicao').put([
         res.status(404).json({ errors: errors.array() })
     }
 })
+
+router.route('/:idExposicao').delete(controllerExposicoes.deleteExpo)
 
 
 module.exports=router

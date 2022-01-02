@@ -81,6 +81,37 @@ const editExpo = (req, res) => {
     })
 }
 
+const deleteExpo = (req, res) => {
+    Exposicao.findAll({
+        where:{
+            id: req.params.idExposicao
+        }
+    }).then((expo) => {
+        if(expo.length > 0){
+            Exposicao.destroy({
+                where:{
+                    id: req.params.idExposicao
+                }
+            }).then((exp) => {
+                if(exp == 1){
+                    res.status(200).json({
+                        message: "Exposição eliminada com sucesso"
+                    })
+                }
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+        }else{
+            res.status(404).json({
+                message: "Exposição com id " +  req.params.idExposicao + " não foi encontrada!"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 exports.listAll = listAll
 exports.createExpo = createExpo
 exports.editExpo = editExpo
+exports.deleteExpo = deleteExpo
