@@ -4,6 +4,7 @@ const Model = require('../models/model_exposicao');
 const { where } = require('sequelize/dist');
 const jwt = require('jsonwebtoken');
 const Exposicao = Model.Exposicao;
+const { Op } = require("sequelize");
 
 
 // const listAll = (req, res) => {
@@ -112,33 +113,33 @@ const deleteExpo = (req, res) => {
 }
 
 const getExposicaoFiltered = (req, res) => {
-    if (req.query.seacrhText || req.query.piso) {
+    if (req.query.searchText || req.query.piso) {
+        console.log("Entrou")
         const whitelist = ['searchText', 'piso']
         let condition = {}
         Object.keys(req.query).forEach(function (key) {
             if (key == "searchText") {
+                console.log("Aquiiiiii -> " + key)
                 condition.txtApresentacao = { [Op.like]: `%${req.query[key]}%` }
+                console.log(condition)
             }
             if (key == "piso") {
                 condition.piso = parseInt(req.query[key])
             }
         })
+        console.log(condition)
         Exposicao.findAll({
-            where: {
-                condition
+            where: condition
+            
+        }).then((data) => {
+            if(data.length == 0){
+                res.status(204).send("sem resultados")
+            }else{
+                res.status(200).json(data)
             }
-        }).then(expo => {
-            if (expo.length > 1) {
-                res.status(200).json(expo)
-            } else {
-                res.status(404).json({
-                    message: "Exposição não encontrada"
-                })
-            }
-        }).catch(error => {
-            res.status(500).send(error)
         })
     } else {
+        console.log("entrou em baixo")
         Exposicao.findAll().then((clientesList) => {
             if (clientesList.length > 0) {
                 res.status(200).json(clientesList)

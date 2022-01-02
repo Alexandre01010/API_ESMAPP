@@ -6,7 +6,7 @@ const { validationResult, body } = require('express-validator')
 
 
 router.get('/', function (req, res) {
-    controllerExposicoes.listAll(req, res);
+    controllerExposicoes.getExposicaoFiltered(req, res);
 })
 
 router.route('/').post([
