@@ -111,7 +111,12 @@ const deleteExpo = (req, res) => {
     })
 }
 
+const getExposicaoFiltered = (req, res) => {
+
+}
+
 exports.listAll = listAll
 exports.createExpo = createExpo
 exports.editExpo = editExpo
 exports.deleteExpo = deleteExpo
+exports.getExposicaoFiltered = getExposicaoFiltered
