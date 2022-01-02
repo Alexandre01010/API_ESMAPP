@@ -153,57 +153,8 @@ const getExposicaoFiltered = (req, res) => {
 
 }
 
-exports.listAll = listAll
+//exports.listAll = listAll
 exports.createExpo = createExpo
 exports.editExpo = editExpo
 exports.deleteExpo = deleteExpo
 exports.getExposicaoFiltered = getExposicaoFiltered
-
-exports.findPropostasFiltered = (req, res) => {
-    if (req.query.type || req.query.state || req.query.text) {
-        const whitelist = ['type', 'state', 'text'];
-        let condition = {};
-        Object.keys(req.query).forEach(function (key) {
-            if (!whitelist.includes(key))
-                return; //inform user of BAD REQUEST           
-            if (key == "type") {
-                if (req.query[key] == "estagio") {
-                    condition.email = { [Op.not]: null }
-                } else {
-                    if (req.query[key] == "projeto") {
-                        condition.email = { [Op.is]: null }
-                    }
-                }
-            }
-            if (key == "text")
-                condition.titulo = { [Op.like]: `%${req.query[key]}%` }
-            if (key == "state") {
-                condition.id_tipo_estado = parseInt(req.query[key])
-            }
-        });
-        Proposta.findAll({
-            where: condition
-        })
-            .then(data => {
-                res.status(200).json(data);
-            })
-            .catch(err => {
-                res.status(500).json({
-                    message:
-                        err.message || "Ocorreu um erro ao encontrar propostas"
-                });
-            });
-    }
-    else {
-        Proposta.findAll(req.body)
-            .then(data => {
-                res.status(200).json(data);
-            })
-            .catch((err) => {
-                res.status(500).json({
-                    message:
-                        err.message || "Ocorreu um erro ao encontrar propostas",
-                });
-            });
-    }
-}
