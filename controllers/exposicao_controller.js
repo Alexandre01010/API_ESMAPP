@@ -121,10 +121,10 @@ const getExposicaoFiltered = (req, res) => {
             if (key == "searchText") {
                 console.log("Aquiiiiii -> " + key)
                 condition.txtApresentacao = { [Op.like]: `%${req.query[key]}%` }
-                console.log(condition)
             }
             if (key == "piso") {
-                condition.piso = parseInt(req.query[key])
+                console.log("Entrou no piso")
+                condition.numeroPiso = parseInt(req.query[key])
             }
         })
         console.log(condition)
@@ -137,6 +137,8 @@ const getExposicaoFiltered = (req, res) => {
             }else{
                 res.status(200).json(data)
             }
+        }).catch(error => {
+            res.status(500).send(error)
         })
     } else {
         console.log("entrou em baixo")
