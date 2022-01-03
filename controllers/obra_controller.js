@@ -19,4 +19,8 @@ const listAll = (req, res) => {
     })
 }
 
+const createObra = (req, res) => {
+    
+}
+
 exports.listAll = listAll

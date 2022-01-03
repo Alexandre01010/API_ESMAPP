@@ -133,7 +133,9 @@ const getExposicaoFiltered = (req, res) => {
             
         }).then((data) => {
             if(data.length == 0){
-                res.status(204).send("sem resultados")
+                res.status(404).json({
+                    message: "Não foram encontradas exposições"
+                })
             }else{
                 res.status(200).json(data)
             }
