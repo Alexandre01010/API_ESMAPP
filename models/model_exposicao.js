@@ -9,6 +9,7 @@ class Exposicao extends Model { }
 Exposicao.init({
     QrCode: DataTypes.STRING,
     pontos: DataTypes.INTEGER,
+    tituloExposicao: DataTypes.STRING,
     nomeAutor: DataTypes.STRING,
     numeroPiso: DataTypes.INTEGER,
     txtApresentacao: DataTypes.STRING,
