@@ -1,9 +1,11 @@
 const utilities = require('../utilities/utilities')
 const bcrypt = require('bcrypt');
-const Model = require('../models/model_obra');
+const ModelObra = require('../models/model_obra');
+const ModelExposicao = require('../models/model_exposicao')
 const { where } = require('sequelize/dist');
 const jwt = require('jsonwebtoken');
-const Obra = Model.Obra;
+const Obra = ModelObra.Obra;
+const Exposicao = ModelExposicao.Exposicao;
 
 
 const listAll = (req, res) => {
@@ -19,8 +21,81 @@ const listAll = (req, res) => {
     })
 }
 
+// const createObra = (req, res) => {
+//     Obra.findAll({
+//         where: {
+//             titulo: req.body.titulo
+//         }
+//     }).then(obra => {
+//         if (obra.length > 0) {
+//             res.status(400).json({
+//                 message: "Essa obra já existe!"
+//             })
+//         } else {
+//             Obra.create({
+//                 QrCode: req.body.QrCode,
+//                 pontos: req.body.pontos,
+//                 img: req.body.img,
+//                 titulo: req.body.titulo,
+//                 metodoUsado: req.body.metodoUsado,
+//                 dimensoes: req.body.dimensoes,
+//                 exposicaoId: req.params.idExposicao
+//             }).then(ob => {
+//                 res.status(201).json({
+//                     message: "Obra criada com sucesso"
+//                 })
+//             }).catch(error => {
+//                 res.status(500).send(error)
+//             })
+//         }
+//     })
+// }
+
 const createObra = (req, res) => {
-    
+    Exposicao.findAll({
+        where: {
+            id: req.params.idExposicao
+        }
+    }).then(expo => {
+        if (expo.length > 0) {
+            Obra.findAll({
+                where: {
+                    titulo: req.body.titulo
+                }
+            }).then(obra => {
+                if (obra.length > 0) {
+                    res.status(400).json({
+                        message: "Essa Obra já existe"
+                    })
+                } else {
+                    Obra.create({
+                        QrCode: req.body.QrCode,
+                        pontos: req.body.pontos,
+                        img: req.body.img,
+                        titulo: req.body.titulo,
+                        metodoUsado: req.body.metodoUsado,
+                        dimensoes: req.body.dimensoes,
+                        exposicaoId: req.params.idExposicao
+                    }).then(ob => {
+                        res.status(201).json({
+                            message: "Obra criada com sucesso"
+                        })
+                    }).catch(error => {
+                        res.status(500).send(error)
+                    })
+                }
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+        } else {
+            res.status(404).json({
+                message: "Exposição não encontrada!"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
 }
 
 exports.listAll = listAll
+exports.createObra = createObra
