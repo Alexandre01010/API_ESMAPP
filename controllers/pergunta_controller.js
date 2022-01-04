@@ -105,8 +105,39 @@ const editPergunta = (req, res) => {
     })
 }
 
+const deletePergunta = (req, res) => {
+    Pergunta.findAll({
+        where: {
+            id: req.params.idPergunta
+        }
+    }).then((pergunta) => {
+        if (pergunta.length > 0) {
+            Pergunta.destroy({
+                where: {
+                    id: req.params.idPergunta
+                }
+            }).then((perg) => {
+                if (perg == 1) {
+                    res.status(200).json({
+                        message: "Pergunta eliminada com sucesso"
+                    })
+                }
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+        } else {
+            res.status(404).json({
+                message: "Pergunta com id " + req.params.idPergunta + " não foi encontrada!"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 
 
 exports.listAll = listAll
 exports.createPergunta = createPergunta
 exports.editPergunta = editPergunta
+exports.deletePergunta = deletePergunta
