@@ -111,11 +111,15 @@ const editObra = (req, res) => {
                 titulo: req.body.titulo,
                 metodoUsado: req.body.metodoUsado,
                 dimensoes: req.body.dimensoes,
-                exposicaoId: req.params.idExposicao
+                exposicaoId: req.body.exposicao
             }, {
-                where:{
+                where: {
                     id: req.params.idObra
                 }
+            }).then(data => {
+                res.status(201).json({
+                    message: "Obra alterada com sucesso"
+                })
             }).catch(err => {
                 res.status(500).send(err)
             })
