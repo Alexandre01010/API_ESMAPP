@@ -14,14 +14,28 @@ router.route('/:idExposicao').post([
     body('pontos').notEmpty(),
     body('img').notEmpty(),
     body('titulo').notEmpty()
-], function (req, res){
+], function (req, res) {
     const errors = validationResult(req)
-    if(errors.isEmpty()){
+    if (errors.isEmpty()) {
         controllerObras.createObra(req, res)
-    }else{
+    } else {
+        res.status(404).json({ errors: errors.array() })
+    }
+})
+
+router.route('/:idObra').put([
+    body('QrCode').notEmpty(),
+    body('pontos').notEmpty(),
+    body('img').notEmpty(),
+    body('titulo').notEmpty()
+], function (req, res) {
+    const errors = validationResult(req)
+    if (errors.isEmpty()) {
+        controllerObras.editObra(req, res)
+    } else {
         res.status(404).json({ errors: errors.array() })
     }
 })
 
 
-module.exports=router
+module.exports = router

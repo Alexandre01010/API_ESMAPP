@@ -97,5 +97,38 @@ const createObra = (req, res) => {
     })
 }
 
+const editObra = (req, res) => {
+    Obra.findAll({
+        where: {
+            id: req.params.idObra
+        }
+    }).then(obra => {
+        if (obra.length > 0) {
+            Obra.update({
+                QrCode: req.body.QrCode,
+                pontos: req.body.pontos,
+                img: req.body.img,
+                titulo: req.body.titulo,
+                metodoUsado: req.body.metodoUsado,
+                dimensoes: req.body.dimensoes,
+                exposicaoId: req.params.idExposicao
+            }, {
+                where:{
+                    id: req.params.idObra
+                }
+            }).catch(err => {
+                res.status(500).send(err)
+            })
+        } else {
+            res.status(404).json({
+                message: "Obra não encontrada"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 exports.listAll = listAll
 exports.createObra = createObra
+exports.editObra = editObra
