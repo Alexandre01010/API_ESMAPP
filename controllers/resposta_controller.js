@@ -11,7 +11,9 @@ const listAll = (req, res) => {
         if (clientesList.length > 0) {
             res.status(200).json(clientesList)
         } else {
-            res.status(204).send("sem resultados")
+            res.status(404).json({
+                message: "Sem resultados"
+            })
         }
 
     }).catch((error) => {
@@ -77,6 +79,37 @@ const editResposta = (req, res) => {
     })
 }
 
+const deleteResposta = (req, res) => {
+    Resposta.findAll({
+        where: {
+            id: req.params.idResposta
+        }
+    }).then((resposta) => {
+        if (resposta.length > 0) {
+            Resposta.destroy({
+                where: {
+                    id: req.params.idResposta
+                }
+            }).then((resp) => {
+                if (resp == 1) {
+                    res.status(200).json({
+                        message: "Resposta eliminada com sucesso"
+                    })
+                }
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+        } else {
+            res.status(404).json({
+                message: "Resposta com id " + req.params.idPergunta + " não foi encontrada!"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 exports.listAll = listAll
 exports.createResposta = createResposta
 exports.editResposta = editResposta
+exports.deleteResposta = deleteResposta

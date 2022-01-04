@@ -21,6 +21,5 @@ router.route('/:idPergunta').post([
 })
 
 router.route('/:idResposta').put(controllerRespostas.editResposta)
-
-
+router.route('/:idResposta').delete(controllerRespostas.deleteResposta)
 module.exports = router
