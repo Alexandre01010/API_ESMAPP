@@ -37,5 +37,7 @@ router.route('/:idObra').put([
     }
 })
 
+router.route('/:idObra').delete(controllerObras.deleteObra)
+
 
 module.exports = router

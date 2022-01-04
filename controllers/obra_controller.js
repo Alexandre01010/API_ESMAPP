@@ -133,6 +133,35 @@ const editObra = (req, res) => {
     })
 }
 
+const deleteObra = (req, res) => {
+    Obra.findAll({
+        where:{
+            id: req.params.idObra
+        }
+    }).then(obra => {
+        if(obra.length > 0){
+            Obra.destroy({
+                where:{
+                    id: req.params.idObra
+                }
+            }).then(data => {
+                res.status(200).json({
+                    message: "Obra eliminada com sucesso"
+                })
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+        }else{
+            res.status(404).json({
+                message: "Obra não encontrada"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 exports.listAll = listAll
 exports.createObra = createObra
 exports.editObra = editObra
+exports.deleteObra = deleteObra
