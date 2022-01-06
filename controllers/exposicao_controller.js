@@ -5,7 +5,7 @@ const { where } = require('sequelize/dist');
 const jwt = require('jsonwebtoken');
 const Exposicao = Model.Exposicao;
 const { Op } = require("sequelize");
-
+var QRCode = require('qrcode')
 
 // const listAll = (req, res) => {
 //     Exposicao.findAll().then((clientesList) => {
@@ -31,21 +31,25 @@ const createExpo = (req, res) => {
                 message: "Exposição com o texto de apresentação " + req.body.txtApresentacao + " já existe!"
             })
         } else {
-            Exposicao.create({
-                QrCode: req.body.QrCode,
-                pontos: req.body.pontos,
-                nomeAutor: req.body.nomeAutor,
-                numeroPiso: req.body.numeroPiso,
-                txtApresentacao: req.body.txtApresentacao,
-                img: req.body.img,
-                dataInicio: req.body.dataInicio,
-                dataFim: req.body.dataFim
-            }).then((exp) => {
-                res.status(201).json({
-                    message: "Exposição criada com sucesso"
+
+            QRCode.toDataURL(req.body.nomeAutor, function (err, url) {
+                console.log(url)
+                Exposicao.create({
+                    QrCode: url,
+                    pontos: req.body.pontos,
+                    nomeAutor: req.body.nomeAutor,
+                    numeroPiso: req.body.numeroPiso,
+                    txtApresentacao: req.body.txtApresentacao,
+                    img: req.body.img,
+                    dataInicio: req.body.dataInicio,
+                    dataFim: req.body.dataFim
+                }).then((exp) => {
+                    res.status(201).json({
+                        message: "Exposição criada com sucesso"
+                    })
+                }).catch(error => {
+                    res.status(500).send("Internal Server Error")
                 })
-            }).catch(error => {
-                res.status(500).send("Internal Server Error")
             })
         }
     })
@@ -130,13 +134,13 @@ const getExposicaoFiltered = (req, res) => {
         console.log(condition)
         Exposicao.findAll({
             where: condition
-            
+
         }).then((data) => {
-            if(data.length == 0){
+            if (data.length == 0) {
                 res.status(404).json({
                     message: "Não foram encontradas exposições"
                 })
-            }else{
+            } else {
                 res.status(200).json(data)
             }
         }).catch(error => {

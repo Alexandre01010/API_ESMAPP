@@ -13,7 +13,6 @@ router.route('/').post([
     body('nomeAutor').notEmpty(),
     body('pontos').notEmpty(),
     body('txtApresentacao').notEmpty(),
-    body('QrCode').notEmpty(),
     body('numeroPiso').notEmpty()
 ], function (req, res){
     const errors = validationResult(req)
