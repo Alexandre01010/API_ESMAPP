@@ -19,4 +19,9 @@ const listAll = (req, res) => {
     })
 }
 
+const createNotificacao = (req, res) => {
+    
+}
+
+
 exports.listAll = listAll
