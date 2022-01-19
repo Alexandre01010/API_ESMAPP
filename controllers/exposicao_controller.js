@@ -27,7 +27,7 @@ const createExpo = (req, res) => {
         }
     }).then(expo => {
         if (expo.length > 0) {
-            res.status(400).json({
+            res.status(409).json({
                 message: "Exposição com o texto de apresentação " + req.body.txtApresentacao + " já existe!"
             })
         } else {
@@ -148,9 +148,9 @@ const getExposicaoFiltered = (req, res) => {
         })
     } else {
         console.log("entrou em baixo")
-        Exposicao.findAll().then((clientesList) => {
-            if (clientesList.length > 0) {
-                res.status(200).json(clientesList)
+        Exposicao.findAll().then((data) => {
+            if (data.length > 0) {
+                res.status(200).json(data)
             } else {
                 res.status(204).send("sem resultados")
             }
