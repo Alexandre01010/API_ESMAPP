@@ -8,9 +8,9 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
 class Obra extends Model { }
 
 Obra.init({
-    qrCode: DataTypes.STRING,
+    qrCode: DataTypes.TEXT,
     pontos: DataTypes.INTEGER,
-    img: DataTypes.STRING,
+    img: DataTypes.TEXT,
     titulo: DataTypes.STRING,
     metodoUsado: DataTypes.STRING,
     dimensoes: DataTypes.STRING

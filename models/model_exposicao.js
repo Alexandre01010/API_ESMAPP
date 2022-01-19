@@ -7,13 +7,13 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
 class Exposicao extends Model { }
 
 Exposicao.init({
-    QrCode: DataTypes.STRING,
+    QrCode: DataTypes.TEXT,
     pontos: DataTypes.INTEGER,
     //tituloExposicao: DataTypes.STRING,
     nomeAutor: DataTypes.STRING,
     numeroPiso: DataTypes.INTEGER,
     txtApresentacao: DataTypes.STRING,
-    img: DataTypes.STRING,
+    img: DataTypes.TEXT,
     dataInicio: DataTypes.DATE,
     dataFim: DataTypes.DATE
 

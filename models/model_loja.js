@@ -11,7 +11,7 @@ Loja.init({
     textoArtigo: DataTypes.STRING,
     euros:DataTypes.FLOAT,
     pontosRequeridos:DataTypes.INTEGER,
-    img:DataTypes.STRING
+    img:DataTypes.TEXT
     
 }, { sequelize, modelName: 'loja',freezeTableName: true })
 
