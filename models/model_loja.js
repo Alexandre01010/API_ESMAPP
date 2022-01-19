@@ -7,7 +7,6 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
 class Loja extends Model { }
 
 Loja.init({
-
     textoArtigo: DataTypes.STRING,
     euros:DataTypes.FLOAT,
     pontosRequeridos:DataTypes.INTEGER,
