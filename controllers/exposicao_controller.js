@@ -32,7 +32,7 @@ const createExpo = (req, res) => {
             })
         } else {
 
-            QRCode.toDataURL(req.body.nomeAutor, function (err, url) {
+            QRCode.toDataURL(req.body.tituloExposicao, function (err, url) {
                 console.log(url)
                 Exposicao.create({
                     QrCode: url,
