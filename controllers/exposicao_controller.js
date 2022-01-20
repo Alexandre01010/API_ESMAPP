@@ -40,6 +40,7 @@ const createExpo = (req, res) => {
                     nomeAutor: req.body.nomeAutor,
                     numeroPiso: req.body.numeroPiso,
                     txtApresentacao: req.body.txtApresentacao,
+                    tituloExposicao: req.body.tituloExposicao,
                     img: req.body.img,
                     dataInicio: req.body.dataInicio,
                     dataFim: req.body.dataFim
