@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 
 router.route('/').post([
     body('nomeAutor').notEmpty(),
-    body('pontos').notEmpty(),
+    //body('pontos').notEmpty(),
     body('txtApresentacao').notEmpty(),
     body('numeroPiso').notEmpty()
 ], function (req, res){
