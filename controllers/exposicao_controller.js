@@ -118,7 +118,7 @@ const deleteExpo = (req, res) => {
 }
 
 const getExposicaoFiltered = (req, res) => {
-    if (req.query.searchText || req.query.piso || req.query.qrcode) {
+    if (req.query.searchText || req.query.piso) {
         console.log("Entrou")
         const whitelist = ['searchText', 'piso']
         let condition = {}
@@ -131,10 +131,6 @@ const getExposicaoFiltered = (req, res) => {
             if (key == "piso") {
                 console.log("Entrou no piso")
                 condition.numeroPiso = parseInt(req.query[key])
-            }
-            if(key == "qrcode"){
-
-                condition.QrCode = req.query[key];
             }
         })
         console.log(condition)
@@ -154,6 +150,22 @@ const getExposicaoFiltered = (req, res) => {
         })
     } else {
         console.log("entrou em baixo")
+        if(req.body.QRCode){
+            Exposicao.findAll({
+                where: {QrCode:req.body.QrCode}
+            }).then((data) => {
+                if (data.length == 0) {
+                    res.status(404).json({
+                        message: "Não foram encontradas exposições"
+                    })
+                } else {
+                    res.status(200).json(data)
+                }
+            }).catch(error => {
+                res.status(500).send(error)
+            })
+
+        }
         Exposicao.findAll().then((data) => {
             if (data.length > 0) {
                 res.status(200).json(data)
