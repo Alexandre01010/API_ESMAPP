@@ -1,7 +1,7 @@
 const utilities = require('../utilities/utilities')
 const bcrypt = require('bcrypt');
 const Model = require('../models/model_user');
-const { where } = require('sequelize/dist');
+//const { where } = require('sequelize/dist');
 const jwt = require('jsonwebtoken');
 const User = Model.User;
 const { Op } = require("sequelize");
