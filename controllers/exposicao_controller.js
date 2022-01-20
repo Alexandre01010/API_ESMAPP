@@ -165,17 +165,18 @@ const getExposicaoFiltered = (req, res) => {
                 res.status(500).send(error)
             })
 
+        }else{
+            Exposicao.findAll().then((data) => {
+                if (data.length > 0) {
+                    res.status(200).json(data)
+                } else {
+                    res.status(204).send("sem resultados")
+                }
+    
+            }).catch((error) => {
+                res.status(400).send('Error');
+            })
         }
-        Exposicao.findAll().then((data) => {
-            if (data.length > 0) {
-                res.status(200).json(data)
-            } else {
-                res.status(204).send("sem resultados")
-            }
-
-        }).catch((error) => {
-            res.status(400).send('Error');
-        })
     }
 
 }
