@@ -152,7 +152,7 @@ const getExposicaoFiltered = (req, res) => {
         console.log("entrou em baixo")
         if(req.body.QRCode){
             Exposicao.findAll({
-                where: {QrCode:(req.body.QrCode)}
+                where: {QrCode:(req.body.QRCode)}
             }).then((data) => {
                 if (data.length == 0) {
                     res.status(404).json({
