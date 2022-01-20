@@ -118,7 +118,7 @@ const deleteExpo = (req, res) => {
 }
 
 const getExposicaoFiltered = (req, res) => {
-    if (req.query.searchText || req.query.piso) {
+    if (req.query.searchText || req.query.piso || req.query.qrcode) {
         console.log("Entrou")
         const whitelist = ['searchText', 'piso']
         let condition = {}
@@ -133,6 +133,7 @@ const getExposicaoFiltered = (req, res) => {
                 condition.numeroPiso = parseInt(req.query[key])
             }
             if(key == "qrcode"){
+
                 condition.QrCode = req.query[key];
             }
         })
