@@ -1,7 +1,7 @@
 const utilities = require('../utilities/utilities')
 const bcrypt = require('bcrypt');
 const Model = require('../models/model_exposicao');
-const { where } = require('sequelize/dist');
+//const { where } = require('sequelize/dist');
 const jwt = require('jsonwebtoken');
 const Exposicao = Model.Exposicao;
 const { Op } = require("sequelize");
