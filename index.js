@@ -34,7 +34,7 @@ const auth = function (req, res, next) {
 
 app.use(express.json());
 //app.use(auth);
-
+//teste
 
 
 app.use('/', router_user);
