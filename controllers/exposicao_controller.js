@@ -126,10 +126,14 @@ const getExposicaoFiltered = (req, res) => {
             if (key == "searchText") {
                 console.log("Aquiiiiii -> " + key)
                 condition.txtApresentacao = { [Op.like]: `%${req.query[key]}%` }
+    
             }
             if (key == "piso") {
                 console.log("Entrou no piso")
                 condition.numeroPiso = parseInt(req.query[key])
+            }
+            if(key == "qrcode"){
+                condition.QrCode = req.query[key];
             }
         })
         console.log(condition)
