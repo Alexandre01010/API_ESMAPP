@@ -21,6 +21,43 @@ const listAll = (req, res) => {
     })
 }
 
+const listObras = (req, res) => {
+    if (req.params.idExposicao) {
+        Exposicao.findAll({
+            where: {
+                exposicaoId: req.params.idExposicao
+            }
+        }).then(data => {
+            if (data.length > 0) {
+                Obra.findAll().then(obras => {
+                    if (obras.length > 0) {
+                        res.status(200).json(obras)
+                    } else {
+                        res.status(404).json({
+                            message: "Não existem obras dessa exposição"
+                        })
+                    }
+                }).catch(error => {
+                    res.status(500).send(error)
+                })
+            }
+        }).catch(error => {
+            res.status(500).send(error)
+        })
+    } else {
+        Obra.findAll().then((data) => {
+            if (data.length > 0) {
+                res.status(200).json(data)
+            } else {
+                res.status(204).send("sem resultados")
+            }
+
+        }).catch((error) => {
+            res.status(400).send('Error');
+        })
+    }
+}
+
 // const createObra = (req, res) => {
 //     Obra.findAll({
 //         where: {
@@ -135,13 +172,13 @@ const editObra = (req, res) => {
 
 const deleteObra = (req, res) => {
     Obra.findAll({
-        where:{
+        where: {
             id: req.params.idObra
         }
     }).then(obra => {
-        if(obra.length > 0){
+        if (obra.length > 0) {
             Obra.destroy({
-                where:{
+                where: {
                     id: req.params.idObra
                 }
             }).then(data => {
@@ -151,7 +188,7 @@ const deleteObra = (req, res) => {
             }).catch(error => {
                 res.status(500).send(error)
             })
-        }else{
+        } else {
             res.status(404).json({
                 message: "Obra não encontrada"
             })
@@ -165,3 +202,4 @@ exports.listAll = listAll
 exports.createObra = createObra
 exports.editObra = editObra
 exports.deleteObra = deleteObra
+exports.listObras = listObras

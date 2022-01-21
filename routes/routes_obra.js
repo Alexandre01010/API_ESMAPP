@@ -37,6 +37,8 @@ router.route('/:idObra').put([
     }
 })
 
+router.route('/:idExposicao').get(controllerObras.listObras)
+
 router.route('/:idObra').delete(controllerObras.deleteObra)
 
 
