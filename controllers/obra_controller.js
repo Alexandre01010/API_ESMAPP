@@ -23,7 +23,7 @@ const listAll = (req, res) => {
 
 const listObras = (req, res) => {
     if (req.params.idExposicao) {
-        Exposicao.findAll({
+        Obra.findAll({
             where: {
                 exposicaoId: req.params.idExposicao
             }
