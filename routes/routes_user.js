@@ -5,7 +5,7 @@ const { validationResult, body } = require('express-validator')
 
 router.post('/registar', [
     body('username').notEmpty().escape(),
-    body('email').notEmpty().isEmail(),
+    //body('email').notEmpty().isEmail(),
     body('password').notEmpty().escape(),
 
 ], function (req, res) {
