@@ -23,10 +23,7 @@ const listAll = (req, res) => {
 const signUp = (req, res) => {
     User.findOne({
         where: {
-            [Op.or]: [
-                { email: req.body.email },
-                { username: req.body.username }
-            ]
+            email: req.body.email
         }
     }).then(user => {
         if (user) {
