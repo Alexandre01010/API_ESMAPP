@@ -10,7 +10,9 @@ const router_exposicao = require('./routes/routes_exposicao')
 const router_obra = require('./routes/routes_obra')
 const router_pergunta = require('./routes/routes_pergunta')
 const router_resposta = require('./routes/routes_resposta')
-const router_loja=require('./routes/routes_loja')
+const router_loja=require('./routes/routes_loja');
+const router = require('./routes/routes_user');
+const router_autor = require('./routes/routes_autor')
 
 
 
@@ -38,6 +40,7 @@ app.use(express.json());
 
 
 app.use('/', router_user);
+app.use('/autor', router_autor)
 app.use('/notificacao', router_notificacao)
 app.use('/exposicao', router_exposicao)
 app.use('/obra', router_obra)
