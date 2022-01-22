@@ -37,7 +37,7 @@ const createExpo = (req, res) => {
                 Exposicao.create({
                     QrCode: url,
                     pontos: req.body.pontos,
-                    nomeAutor: req.body.nomeAutor,
+                    //nomeAutor: req.body.nomeAutor,
                     numeroPiso: req.body.numeroPiso,
                     txtApresentacao: req.body.txtApresentacao,
                     tituloExposicao: req.body.tituloExposicao,
@@ -66,7 +66,7 @@ const editExpo = (req, res) => {
             Exposicao.update({
                 QrCode: req.body.QrCode,
                 pontos: req.body.pontos,
-                nomeAutor: req.body.nomeAutor,
+                //nomeAutor: req.body.nomeAutor,
                 numeroPiso: req.body.numeroPiso,
                 txtApresentacao: req.body.txtApresentacao,
                 img: req.body.img,

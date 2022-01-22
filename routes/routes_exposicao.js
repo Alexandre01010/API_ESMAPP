@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 })
 
 router.route('/').post([
-    body('nomeAutor').notEmpty(),
+    //body('nomeAutor').notEmpty(),
     //body('pontos').notEmpty(),
     body('txtApresentacao').notEmpty(),
     body('numeroPiso').notEmpty()
@@ -24,7 +24,7 @@ router.route('/').post([
 })
 
 router.route('/:idExposicao').put([
-    body('nomeAutor').notEmpty(),
+    //body('nomeAutor').notEmpty(),
     body('pontos').notEmpty(),
     body('txtApresentacao').notEmpty(),
     body('QrCode').notEmpty(),

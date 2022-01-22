@@ -10,7 +10,7 @@ Exposicao.init({
     QrCode: DataTypes.TEXT,
     pontos: DataTypes.INTEGER,
     tituloExposicao: DataTypes.STRING,
-    nomeAutor: DataTypes.STRING,
+    //nomeAutor: DataTypes.STRING,
     numeroPiso: DataTypes.INTEGER,
     txtApresentacao: DataTypes.STRING,
     img: DataTypes.TEXT,
