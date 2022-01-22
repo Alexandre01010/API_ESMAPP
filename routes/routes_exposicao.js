@@ -40,5 +40,7 @@ router.route('/:idExposicao').put([
 
 router.route('/:idExposicao').delete(controllerExposicoes.deleteExpo)
 
+router.route('/temporaria').get(controllerExposicoes.getTemporaryExpositions)
+
 
 module.exports=router

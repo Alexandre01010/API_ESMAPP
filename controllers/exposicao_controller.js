@@ -170,7 +170,7 @@ const getExposicaoFiltered = (req, res) => {
                 if (data.length > 0) {
                     res.status(200).json(data)
                 } else {
-                    res.status(204).send("sem resultados")
+                    res.status(404).send("sem resultados")
                 }
     
             }).catch((error) => {
@@ -181,8 +181,30 @@ const getExposicaoFiltered = (req, res) => {
 
 }
 
+
+const getTemporaryExpositions = (req, res) => {
+    Exposicao.findAll({
+        where:{
+            dataInicio:{
+                [Op.not]: null
+            }
+        }
+    }).then(data => {
+        if(data.length > 0){
+            res.status(200).json(data)
+        }else{
+            res.status(404).json({
+                message: "Não foram encontradas exposicoes temporarias"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)
+    })
+}
+
 //exports.listAll = listAll
 exports.createExpo = createExpo
 exports.editExpo = editExpo
 exports.deleteExpo = deleteExpo
 exports.getExposicaoFiltered = getExposicaoFiltered
+exports.getTemporaryExpositions = getTemporaryExpositions
