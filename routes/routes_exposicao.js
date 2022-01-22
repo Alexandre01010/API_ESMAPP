@@ -42,5 +42,7 @@ router.route('/:idExposicao').delete(controllerExposicoes.deleteExpo)
 
 router.route('/temporaria').get(controllerExposicoes.getTemporaryExpositions)
 
+router.route('/permanente').get(controllerExposicoes.getPermanentExpositions)
+
 
 module.exports=router
