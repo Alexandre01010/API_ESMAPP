@@ -53,7 +53,7 @@ const createAutor = (req, res) => {
                 biografia: req.body.biografia
             }).then(autor => {
                 res.status(201).json({
-                    message: "Exposição criada com sucesso"
+                    message: "Autor criada com sucesso"
                 })
             }).catch(err => {
                 res.status(500).send(err)

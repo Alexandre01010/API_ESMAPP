@@ -202,9 +202,28 @@ const getTemporaryExpositions = (req, res) => {
     })
 }
 
+const getPermanentExpositions = (req, res) => {
+    Exposicao.findAll({
+        where:{
+            dataInicio: null
+        }
+    }).then(data => {
+        if(data.length > 0){
+            res.status(200).json(data)
+        }else{
+            res.status(404).json({
+                message: "Não foram encontradas exposicoes permanentes"
+            })
+        }
+    }).catch(error => {
+        res.status(500).send(error)        
+    })
+}
+
 //exports.listAll = listAll
 exports.createExpo = createExpo
 exports.editExpo = editExpo
 exports.deleteExpo = deleteExpo
 exports.getExposicaoFiltered = getExposicaoFiltered
 exports.getTemporaryExpositions = getTemporaryExpositions
+exports.getPermanentExpositions = getPermanentExpositions
