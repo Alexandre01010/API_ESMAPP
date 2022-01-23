@@ -50,8 +50,8 @@ const createAutor = (req, res) => {
         }else{
             Autor.create({
                 nome: req.body.nome,
-                biografia: req.body.biografia,
-                autorId:req.body.autorId
+                biografia: req.body.biografia
+                
             }).then(autor => {
                 res.status(201).json({
                     message: "Autor criada com sucesso"

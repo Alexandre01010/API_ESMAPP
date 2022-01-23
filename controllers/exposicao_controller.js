@@ -43,7 +43,8 @@ const createExpo = (req, res) => {
                     tituloExposicao: req.body.tituloExposicao,
                     img: req.body.img,
                     dataInicio: req.body.dataInicio,
-                    dataFim: req.body.dataFim
+                    dataFim: req.body.dataFim,
+                    autorId:req.body.autorId
                 }).then((exp) => {
                     res.status(201).json({
                         message: "Exposição criada com sucesso"
@@ -71,7 +72,8 @@ const editExpo = (req, res) => {
                 txtApresentacao: req.body.txtApresentacao,
                 img: req.body.img,
                 dataInicio: req.body.dataInicio,
-                dataFim: req.body.dataFim
+                dataFim: req.body.dataFim,
+                autorId:req.body.autorId
             }, {
                 where: { id: req.params.idExposicao }
             })
