@@ -105,20 +105,23 @@ const createObra = (req, res) => {
                         message: "Essa Obra já existe"
                     })
                 } else {
-                    Obra.create({
-                        QrCode: req.body.QrCode,
-                        pontos: req.body.pontos,
-                        img: req.body.img,
-                        titulo: req.body.titulo,
-                        metodoUsado: req.body.metodoUsado,
-                        dimensoes: req.body.dimensoes,
-                        exposicaoId: req.params.idExposicao
-                    }).then(ob => {
-                        res.status(201).json({
-                            message: "Obra criada com sucesso"
+                    QRCode.toDataURL(req.body.titulo, function (err, url) {
+                        Obra.create({
+                            qrCode: url,
+                            pontos: req.body.pontos,
+                            img: req.body.img,
+                            titulo: req.body.titulo,
+                            metodoUsado: req.body.metodoUsado,
+                            dimensoes: req.body.dimensoes,
+                            exposicaoId: req.params.idExposicao
+                        }).then(ob => {
+                            res.status(201).json({
+                                message: "Obra criada com sucesso"
+                            })
+                        }).catch(error => {
+                            res.status(500).send(error)
                         })
-                    }).catch(error => {
-                        res.status(500).send(error)
+
                     })
                 }
             }).catch(error => {
