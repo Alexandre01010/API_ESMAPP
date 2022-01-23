@@ -18,7 +18,7 @@ const router_autor = require('./routes/routes_autor')
 
 
 const auth = function (req, res, next) {
-    let exceptions = ['/'];
+    let exceptions = ['/login','/registar'];
     if (exceptions.indexOf(req.url) >= 0) {
         next();
     } else {
