@@ -6,6 +6,7 @@ const ModelExposicao = require('../models/model_exposicao')
 const jwt = require('jsonwebtoken');
 const Obra = ModelObra.Obra;
 const Exposicao = ModelExposicao.Exposicao;
+var QRCode = require('qrcode')
 
 
 const listAll = (req, res) => {
