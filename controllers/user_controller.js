@@ -59,7 +59,7 @@ const signIn = (req, res) => {
             const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
             if (passwordIsValid) {
                 utilities.generateToken({ username: req.body.username }, token => {
-                    res.status(200).json(token)
+                    res.status(200).json(token + " " + user.username) //username preparado para android sem necessidade de token em determinadas paginas
                 })
             } else {
                 res.status(400).json("Credenciais erradas")
