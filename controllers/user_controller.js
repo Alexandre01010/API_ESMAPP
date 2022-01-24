@@ -52,7 +52,7 @@ const signUp = (req, res) => {
 const signIn = (req, res) => {
     User.findOne({
         where: {
-            username: req.body.username
+            email: req.body.email
         }
     }).then(user => {
         if (user) {

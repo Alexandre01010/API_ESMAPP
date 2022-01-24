@@ -18,7 +18,7 @@ router.post('/registar', [
 })
 
 router.post('/login', [
-    body('username').notEmpty().escape(),
+    body('email').notEmpty().escape(),
     body('password').notEmpty().escape(),
 
 ], function (req, res) {
