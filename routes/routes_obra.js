@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
 })
 
 router.route('/:idExposicao').post([
-    body('QrCode').notEmpty(),
     body('pontos').notEmpty(),
     body('img').notEmpty(),
     body('titulo').notEmpty()
