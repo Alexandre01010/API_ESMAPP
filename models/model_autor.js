@@ -9,7 +9,7 @@ class Autor extends Model { }
 
 Autor.init({
     nome: DataTypes.STRING,
-    biografia: DataTypes.STRING
+    biografia: DataTypes.TEXT
 
 }, { sequelize, modelName: 'autor', freezeTableName: true })
 
