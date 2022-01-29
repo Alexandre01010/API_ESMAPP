@@ -6,6 +6,13 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+
+/**
+ * @typedef Compra
+ * @property {date} data.required
+ * @property {string} pagamento.required
+ */
+
 class Compra extends Model { }
 
 Compra.init({

@@ -4,6 +4,14 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+/**
+ * @typedef Users
+ * @property {integer} pontos.required
+ * @property {string} username.required
+ * @property {string} password.required
+ * @property {string} email.required
+ */
+
 class User extends Model { }
 
 User.init({

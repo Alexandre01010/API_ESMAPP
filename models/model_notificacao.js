@@ -5,6 +5,13 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+
+/**
+ * @typedef Notificações
+ * @property {string} texto.required
+ * @property {boolean} visibilidade.required
+ */
+
 class Notificacao extends Model { }
 
 Notificacao.init({

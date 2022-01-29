@@ -4,6 +4,42 @@ const controllerRespostas = require('../controllers/resposta_controller')
 const { validationResult, body } = require('express-validator')
 
 
+/**
+ * @route GET /resposta
+ * @group Respostas
+ * @returns {object} 200 - An array of Respostas info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+/**
+ * @route POST /respotas/{idPergunta}
+ * @group Respostas
+ * @param {object} object.body - Resposta - eg. {"texto": "1992", "veracidade": true}
+ * @returns {object} 200 - An array of Respostas info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+/**
+ * @route PUT /pergunta/{idResposta}
+ * @group Respostas
+ * @param {string} idResposta.path - id da Resposta
+ * @returns {object} 200 OK
+ * @returns {Error} 404 - Error array
+ * @security Bearer
+ */
+/**
+ * @route DELETE /pergunta/{idResposta}
+ * @group Respostas
+ * @param {string} idResposta.path - id da Resposta
+ * @returns {object} 200 OK
+ * @returns {Error} 404 - Error array
+ * @security Bearer
+ */
+
+
+
 router.get('/', function (req, res) {
     controllerRespostas.listAll(req, res);
 })

@@ -3,6 +3,54 @@ const router = express.Router();
 const controllerObras = require('../controllers/obra_controller')
 const { validationResult, body } = require('express-validator')
 
+/**
+ * @route GET /obra
+ * @group Obras
+ * @returns {object} 200 - An array of Obras info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+/**
+ * @route POST /obra/{idExposicao}
+ * @group Obras
+ * @param {object} object.body - Obra - eg. {"titulo": "Kizhinga", "metodoUsado": "Aguarelas", "dimensoes": "53x22cm", "QrCode":"dunno", pontos: 19,"img": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+        9TXL0Y4OHwAAAABJRU5ErkJggg=="}
+* @param {string} idExposicao.path - id da Exposição
+ * @returns {object} 200 - An array of Obras info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+/**
+ * @route PUT /obra/{idObra}
+ * @group Obras
+ * @param {string} idObra.path - id da Obra
+ * @returns {object} 200 OK
+ * @returns {Error} 404 - Error array
+ * @security Bearer
+ */
+/**
+ * @route GET /obra/{idExposicao}
+ * @group Obras
+ * @param {string} idExposicao.path - id da Exposição
+ * @returns {object} 200 - An array of Obras info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+/**
+ * @route DELETE /obra/{idObra}
+ * @group Obras
+ * @param {string} idObra.path - id da Obra
+ * @returns {object} 200 - An array of Obras info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+
+
 
 
 router.get('/', function (req, res) {

@@ -14,11 +14,15 @@ const router_loja=require('./routes/routes_loja');
 const router = require('./routes/routes_user');
 const router_autor = require('./routes/routes_autor')
 
+// Swagger
+const expressSwagger = require('express-swagger-generator')(app); 
+const options = require('./swagger_conf'); 
+expressSwagger(options); 
 
 
 
 const auth = function (req, res, next) {
-    let exceptions = ['/login','/registar'];
+    let exceptions = ['/login','/registar','./api-docs'];
     if (exceptions.indexOf(req.url) >= 0) {
         next();
     } else {

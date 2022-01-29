@@ -4,6 +4,15 @@ const controller = require('../controllers/notificacao_controller')
 const { validationResult, body } = require('express-validator')
 
 
+/**
+ * @route GET /notificacao
+ * @group Notificações
+ * @returns {object} 200 - An array of Notificações info
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
+ * @security Bearer
+ */
+
 
 router.get('/', function (req, res) {
     controller.listAll(req, res);

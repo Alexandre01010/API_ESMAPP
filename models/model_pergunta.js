@@ -5,6 +5,12 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+/**
+ * @typedef Perguntas
+ * @property {string} texto.required
+ * @property {integer} pontos.required
+ */
+
 class Pergunta extends Model { }
 
 Pergunta.init({

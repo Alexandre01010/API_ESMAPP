@@ -5,6 +5,14 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+
+/**
+ * @typedef Autores
+ * @property {string} nome.required
+ * @property {string} biografia.required
+ */
+
+
 class Autor extends Model { }
 
 Autor.init({

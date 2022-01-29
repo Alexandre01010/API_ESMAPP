@@ -5,6 +5,17 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
     host: 'www.joaoferreira.eu',
     dialect: 'mysql'
 })
+/**
+ * @typedef Obras
+ * @property {string} qrCode.required
+ * @property {string} img.required
+ * @property {string} dimensoes.required
+ * @property {integer} pontos.required
+ * @property {string} dimensoes.required
+ * @property {string} metodoUsado.required
+ * @property {string} titulo.required
+ */
+
 class Obra extends Model { }
 
 Obra.init({
