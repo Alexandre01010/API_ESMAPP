@@ -145,24 +145,24 @@ const editObra = (req, res) => {
         }
     }).then(obra => {
         if (obra.length > 0) {
-            Obra.update({
-                QrCode: req.body.QrCode,
-                pontos: req.body.pontos,
-                img: req.body.img,
-                titulo: req.body.titulo,
-                metodoUsado: req.body.metodoUsado,
-                dimensoes: req.body.dimensoes,
-                exposicaoId: req.body.exposicao
-            }, {
-                where: {
-                    id: req.params.idObra
-                }
-            }).then(data => {
-                res.status(201).json({
-                    message: "Obra alterada com sucesso"
+            QRCode.toDataURL(req.body.titulo, function (err, url) {
+                Obra.update({
+                    qrCode: url,
+                    pontos: req.body.pontos,
+                    img: req.body.img,
+                    titulo: req.body.titulo,
+                    metodoUsado: req.body.metodoUsado,
+                    dimensoes: req.body.dimensoes,
+                    exposicaoId: req.params.idExposicao
+                }, {
+                    where: { id: req.params.idObra }}).then(ob => {
+                    res.status(200).json({
+                        message: "Obra alterada com sucesso"
+                    })
+                }).catch(error => {
+                    res.status(500).send(error)
                 })
-            }).catch(err => {
-                res.status(500).send(err)
+
             })
         } else {
             res.status(404).json({

@@ -44,7 +44,7 @@ const createExpo = (req, res) => {
                     img: req.body.img,
                     dataInicio: req.body.dataInicio,
                     dataFim: req.body.dataFim,
-                    autorId:req.body.autorId
+                    autorId: req.body.autorId
                 }).then((exp) => {
                     res.status(201).json({
                         message: "Exposição criada com sucesso"
@@ -70,13 +70,21 @@ const editExpo = (req, res) => {
                 //nomeAutor: req.body.nomeAutor,
                 numeroPiso: req.body.numeroPiso,
                 txtApresentacao: req.body.txtApresentacao,
+                tituloExposicao: req.body.tituloExposicao,
                 img: req.body.img,
                 dataInicio: req.body.dataInicio,
                 dataFim: req.body.dataFim,
-                autorId:req.body.autorId
+                autorId: req.body.autorId
             }, {
                 where: { id: req.params.idExposicao }
+            }).then(data => {
+                res.status(201).json({
+                    message: "Exposicao alterada com sucesso"
+                })
+            }).catch((error) => {
+                res.status(500).send(error)
             })
+
         } else {
             res.status(404).json({
                 message: "Exposição com o id " + req.params.idExposicao + " não encontrada"
@@ -128,7 +136,7 @@ const getExposicaoFiltered = (req, res) => {
             if (key == "searchText") {
                 console.log("Aquiiiiii -> " + key)
                 condition.txtApresentacao = { [Op.like]: `%${req.query[key]}%` }
-    
+
             }
             if (key == "piso") {
                 console.log("Entrou no piso")
@@ -152,9 +160,9 @@ const getExposicaoFiltered = (req, res) => {
         })
     } else {
         console.log("entrou em baixo")
-        if(req.body.QRCode){
+        if (req.body.QRCode) {
             Exposicao.findAll({
-                where: {QrCode:(req.body.QRCode)}
+                where: { QrCode: (req.body.QRCode) }
             }).then((data) => {
                 if (data.length == 0) {
                     res.status(404).json({
@@ -167,14 +175,14 @@ const getExposicaoFiltered = (req, res) => {
                 res.status(500).send(error)
             })
 
-        }else{
+        } else {
             Exposicao.findAll().then((data) => {
                 if (data.length > 0) {
                     res.status(200).json(data)
                 } else {
                     res.status(404).send("sem resultados")
                 }
-    
+
             }).catch((error) => {
                 res.status(400).send('Error');
             })
@@ -186,15 +194,15 @@ const getExposicaoFiltered = (req, res) => {
 
 const getTemporaryExpositions = (req, res) => {
     Exposicao.findAll({
-        where:{
-            dataInicio:{
+        where: {
+            dataInicio: {
                 [Op.not]: null
             }
         }
     }).then(data => {
-        if(data.length > 0){
+        if (data.length > 0) {
             res.status(200).json(data)
-        }else{
+        } else {
             res.status(404).json({
                 message: "Não foram encontradas exposicoes temporarias"
             })
@@ -206,19 +214,19 @@ const getTemporaryExpositions = (req, res) => {
 
 const getPermanentExpositions = (req, res) => {
     Exposicao.findAll({
-        where:{
+        where: {
             dataInicio: null
         }
     }).then(data => {
-        if(data.length > 0){
+        if (data.length > 0) {
             res.status(200).json(data)
-        }else{
+        } else {
             res.status(404).json({
                 message: "Não foram encontradas exposicoes permanentes"
             })
         }
     }).catch(error => {
-        res.status(500).send(error)        
+        res.status(500).send(error)
     })
 }
 

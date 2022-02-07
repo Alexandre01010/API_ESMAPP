@@ -56,15 +56,16 @@ router.post('/login', [
     } else {
         res.status(404).json({ errors: errors.array() })
     }
+    
 })
-
-
-
-
-
 router.get('/', function (req, res) {
-    controller.listAll(req, res);
+    controllerUser.listAll(req, res);
 })
+
+
+
+
+
 
 
 module.exports=router

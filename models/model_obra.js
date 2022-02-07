@@ -7,12 +7,10 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
 })
 /**
  * @typedef Obras
- * @property {string} qrCode.required
  * @property {string} img.required
- * @property {string} dimensoes.required
+ * @property {string} dimensoes
  * @property {integer} pontos.required
- * @property {string} dimensoes.required
- * @property {string} metodoUsado.required
+ * @property {string} metodoUsado
  * @property {string} titulo.required
  */
 

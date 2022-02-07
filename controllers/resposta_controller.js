@@ -38,7 +38,7 @@ const createResposta = (req, res) => {
                 perguntumId: req.params.idPergunta
             }).then((resp) => {
                 res.status(201).json({
-                    message: "Resposta criada com sucesso"
+                    message: "resposta criada com sucesso"
                 })
             }).catch(error => {
                 res.status(500).send("Internal Server Error")

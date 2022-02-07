@@ -8,7 +8,7 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
  * @typedef Loja
  * @property {string} textoArtigo.required
  * @property {float} euros.required
- * @property {integer} pontosRequeridos.required
+ * @property {integer} pontosRequeridos
  * @property {string} img.required
  */
 

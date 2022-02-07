@@ -6,13 +6,10 @@ const sequelize = new Sequelize.Sequelize('joaoferr_ESMAPP_21_22_GRP3', 'joaofer
 })
 /**
  * @typedef Exposições
- * @property {string} qrCode.required
  * @property {string} img.required
  * @property {string} txtApresentacao.required
- * @property {integer} pontos.required
+ * @property {integer} pontos
  * @property {integer} numeroPiso.required
- * @property {date} dataFim.required
- * @property {date} dataInicio.required
  * @property {string} tituloExposicao.required
  */
 
@@ -23,7 +20,6 @@ Exposicao.init({
     QrCode: DataTypes.TEXT,
     pontos: DataTypes.INTEGER,
     tituloExposicao: DataTypes.STRING,
-    //nomeAutor: DataTypes.STRING,
     numeroPiso: DataTypes.INTEGER,
     txtApresentacao: DataTypes.STRING,
     img: DataTypes.TEXT,

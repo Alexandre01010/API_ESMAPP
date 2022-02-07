@@ -14,7 +14,8 @@ const { validationResult, body } = require('express-validator')
 /**
  * @route POST /pergunta/{idExposicao}
  * @group Perguntas
- * @param {object} object.body - Pergunta - eg. {"texto": "Em que ano foi pintada a obra Kizhinga?", "pontos": 19}
+ * @param {string} idExposicao.path - id da Exposição
+ * @param {object} object.body - Pergunta - eg. {"texto":"Em que ano foi pintada a obra Kizhinga?","pontos":5}
  * @returns {object} 200 - An array of Perguntas info
  * @returns {Error} 400 - Unexpected error
  * @returns {Error} 401 - Invalid Token
@@ -24,8 +25,10 @@ const { validationResult, body } = require('express-validator')
  * @route PUT /pergunta/{idPergunta}
  * @group Perguntas
  * @param {string} idPergunta.path - id da Pergunta
+ * @param {object} object.body - Pergunta - eg. {"texto":"Em que dia foi pintada a obra Kizhinga?","pontos":10}
  * @returns {object} 200 OK
  * @returns {Error} 404 - Error array
+ * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 /**
@@ -34,6 +37,7 @@ const { validationResult, body } = require('express-validator')
  * @param {string} idPergunta.path - id da Pergunta
  * @returns {object} 200 OK
  * @returns {Error} 404 - Error array
+ * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 

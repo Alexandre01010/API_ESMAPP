@@ -27,8 +27,10 @@ const { validationResult, body } = require('express-validator')
  * @route PUT /obra/{idObra}
  * @group Obras
  * @param {string} idObra.path - id da Obra
+ * @param {object} object.body - Obra - eg. {"titulo": "Um dia na praia ao sol","metodoUsado": "tinta pastel","dimensoes": "16x16","createdAt": "2022-01-25T02:05:45.000Z","updatedAt": "2022-01-25T02:05:45.000Z","exposicaoId": 14}
  * @returns {object} 200 OK
  * @returns {Error} 404 - Error array
+ * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 /**
@@ -71,7 +73,6 @@ router.route('/:idExposicao').post([
 })
 
 router.route('/:idObra').put([
-    body('QrCode').notEmpty(),
     body('pontos').notEmpty(),
     body('img').notEmpty(),
     body('titulo').notEmpty()

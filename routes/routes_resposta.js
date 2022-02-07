@@ -13,28 +13,32 @@ const { validationResult, body } = require('express-validator')
  * @security Bearer
  */
 /**
- * @route POST /respotas/{idPergunta}
+ * @route POST /resposta/{idPergunta}
  * @group Respostas
+ * @param {string} idPergunta.path - id da Pergunta
  * @param {object} object.body - Resposta - eg. {"texto": "1992", "veracidade": true}
- * @returns {object} 200 - An array of Respostas info
+ * @returns {object} 200 OK
  * @returns {Error} 400 - Unexpected error
  * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 /**
- * @route PUT /pergunta/{idResposta}
+ * @route PUT /resposta/{idResposta}
  * @group Respostas
  * @param {string} idResposta.path - id da Resposta
+ * @param {object} object.body - Resposta - eg. {"texto": "1992", "veracidade": true}
  * @returns {object} 200 OK
- * @returns {Error} 404 - Error array
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 /**
- * @route DELETE /pergunta/{idResposta}
+ * @route DELETE /resposta/{idResposta}
  * @group Respostas
  * @param {string} idResposta.path - id da Resposta
  * @returns {object} 200 OK
- * @returns {Error} 404 - Error array
+ * @returns {Error} 400 - Unexpected error
+ * @returns {Error} 401 - Invalid Token
  * @security Bearer
  */
 

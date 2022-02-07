@@ -1,16 +1,16 @@
 const options = {
     swaggerDefinition: {
-        info: { 
+        info: {
             description: 'API for FCM android app',
             title: 'FCM API',
             version: '1.0.0',
         },
-        host: 'https://fcmapiesmapp.herokuapp.com/',
+        host:'fcmapiesmapp.herokuapp.com',
         basePath: '/',
         produces: [
             "application/json"
         ],
-        schemes: ['http'],
+        schemes: ['https'],
         securityDefinitions: {
             Bearer: {
                 type: 'apiKey',
@@ -20,9 +20,10 @@ const options = {
             }
         }
         
+
     },
     basedir: __dirname,
-    files: ['./routes/**/*.js', './models/**/*.js']
+    files: ['./routes//*.js', './models//*.js']
 };
 
-module.exports = options; 
+module.exports = options;
